@@ -1,0 +1,48 @@
+﻿@model MODULE04_09.ViewModels.CategoryProductsViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductsByCategory</title>
+</head>
+<body>
+    <div>
+        <h4>CategoryProductsViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CategoryID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CategoryName)
+            </dd>
+    
+        </dl>
+        <ul>
+            @foreach (var item in Model.Products)
+            {
+                <li>@item.ProductID -- @item.ProductName -- @item.UnitPrice</li>
+            }
+        </ul>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
