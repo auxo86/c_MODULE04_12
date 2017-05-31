@@ -56,6 +56,7 @@ namespace MODULE04_09.Models
         public CategoryProductsViewModel GetProductsByCategoryID(int id)
         {
             NorthwindEntities db = new NorthwindEntities();
+            //query是準備來給Products做陣列用的
             var query = from p in db.Products
                         where p.CategoryID == id
                         select new ProductViewModel
@@ -66,6 +67,7 @@ namespace MODULE04_09.Models
                         };
             CategoryProductsViewModel result = new CategoryProductsViewModel();
             result.CategoryID = id;
+            //entity是共用的，所以db共用。Find會回傳Category，所以可以使用.CategoryName
             result.CategoryName = db.Categories.Find(id).CategoryName;
             result.Products = query.ToList();
 
